@@ -34,7 +34,7 @@ img = cv2.imread('Imagen_con_detalles_escondidos.tif', cv2.IMREAD_GRAYSCALE)
 
 img = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_REPLICATE)
 
-window_size = 10
+window_size =12  # Tamaño de la ventana (puede ajustarse según sea necesario)
 # Aplicar la ecualización local del histograma
 output_image = local_histogram_equalization(img, window_size)
 
