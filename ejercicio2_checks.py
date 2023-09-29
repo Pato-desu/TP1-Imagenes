@@ -15,12 +15,12 @@ def check(linea, n_car, n_pal):
         case 4:
             if n_pal == 1 and n_car == 8:
                 return True
-        # FALTA VER COMO HACER ESTE:
-        case 5:                 
-            # if n_pal == 2 and n_car < 26: 
+        
+        case 5 | 6 | 7:                 
+            if n_car == 1: 
                 return True
                     
-        case 6:
+        case 8:
             if n_car < 26:
                 return True       
             
