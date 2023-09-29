@@ -32,9 +32,10 @@ def local_histogram_equalization(image, window_size):
 
 img = cv2.imread('Imagen_con_detalles_escondidos.tif', cv2.IMREAD_GRAYSCALE)
 
-img = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_REPLICATE)
-
 window_size = 30
+bsize = window_size // 2
+img = cv2.copyMakeBorder(img, bsize, bsize, bsize, bsize, cv2.BORDER_REPLICATE)
+
 # Aplicar la ecualización local del histograma
 hidden_image = local_histogram_equalization(img, window_size)
 # plt.imshow(hidden_image, cmap="gray")
