@@ -34,13 +34,23 @@ img = cv2.imread('Imagen_con_detalles_escondidos.tif', cv2.IMREAD_GRAYSCALE)
 
 img = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_REPLICATE)
 
-window_size =12  # Tamaño de la ventana (puede ajustarse según sea necesario)
+window_size = 30
 # Aplicar la ecualización local del histograma
-output_image = local_histogram_equalization(img, window_size)
+hidden_image = local_histogram_equalization(img, window_size)
+# plt.imshow(hidden_image, cmap="gray")
+# plt.show()
+
+# Binarizamos la imagen que estaba en escala de gris
+_, binary_image = cv2.threshold(hidden_image, 60, 255, cv2.THRESH_BINARY)
+# plt.imshow(binary_image, cmap="gray")
+# plt.show()
 
 # Aplicar un filtro de mediana para eliminar el ruido
 kernel_size = 3  # Tamaño del kernel de mediana (puede ajustarse según sea necesario)
-denoised_image = cv2.medianBlur(output_image, kernel_size)
+denoised_image = cv2.medianBlur(binary_image, kernel_size)
+
+# plt.imshow(denoised_image, cmap="gray")
+# plt.show()
 
 # Guardar la imagen denoised
-cv2.imwrite('output_image.png', output_image)
+cv2.imwrite('output_image.png', denoised_image)
