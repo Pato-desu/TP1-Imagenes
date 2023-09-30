@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 # --- Cargo imagen ------------------------------------------------------------
-img = cv2.imread('./Tp/TP1-imagenes/formulario_01.png',cv2.IMREAD_GRAYSCALE) 
+img = cv2.imread('formulario_01.png',cv2.IMREAD_GRAYSCALE) 
 plt.imshow(img, cmap='gray')
 plt.show(block=False)
 
@@ -14,7 +14,7 @@ _, img_bw = cv2.threshold(img, 90, 255, cv2.THRESH_BINARY)
 
 
 img_zeros = img_bw==0
-# plt.imshow(img_zeros, cmap='gray'), plt.show()
+#plt.imshow(img_zeros, cmap='gray'), plt.show()
 img_zeros = img_zeros*1
 
 suma_por_columna = np.sum(img_zeros, axis=0)
@@ -115,7 +115,7 @@ p3_no = img_bw[row_high[8][0]+2:row_high[9][0]-2,column_high[2][0]+2:column_high
 comentarios = img_bw[row_high[9][0]+2:row_high[10][0]-2,column_high[1][0]+2:column_high[3][0]-2]
 
 #SI QUIEREN IMPRIMIR ALGUN RENGLON PONGAN [ EJEMPLO DE COMENTARIOS]
-#plt.imshow(comentarios, cmap='gray'), plt.show(block = False)
+#plt.imshow(comentarios, cmap='gray'), plt.show(block = True)
 
 renglones = {"Nombre_apellido": nombre_apellido, "edad": edad, "mail": mail,
               "legajo": legajo, "pregunta_1":[p1_si,p1_no], "pregunta_2":[p2_si,p2_no],
