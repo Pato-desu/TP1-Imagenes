@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-
 def local_histogram_equalization(image, window_size):
     # Obtener las dimensiones de la imagen
     height, width = image.shape[:2]
@@ -54,4 +53,4 @@ denoised_image = cv2.medianBlur(binary_image, kernel_size)
 # plt.show()
 
 # Guardar la imagen denoised
-cv2.imwrite('output_image.png', denoised_image)
+cv2.imwrite('salida_ejercicio_1.png', denoised_image)
