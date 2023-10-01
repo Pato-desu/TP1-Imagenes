@@ -200,4 +200,4 @@ def check_y_print(nombre_archivo):
 #check_y_print('formulario_vacio.png')
 
 for i in range(1, 6):
-    check_y_print(f'formulario_0{i}.png')
+    check_y_print(f'Images/formulario_0{i}.png')
