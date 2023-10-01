@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 #CONTAR ESPACIO
-#ARREGLAR LO DE LA EDAD ??
 
 def plot_pix_sumat(img_zeros, suma_por_columna, suma_por_fila):
     # Crear vectores para los ejes x e y
@@ -84,9 +83,9 @@ def sub_images(nom_archivo):
     #COMENTARIOS 9,1
     comentarios = img_bw[row_high[9][0]+2:row_high[10][0]-2,column_high[1][0]+2:column_high[3][0]-2]
 
-    renglones = {"Nombre_apellido": nombre_apellido, "edad": edad, "mail": mail,
-              "legajo": legajo, "pregunta_1":[p1_si,p1_no], "pregunta_2":[p2_si,p2_no],
-              "pregunta_3":[p3_si,p3_no], "comentarios": comentarios}
+    renglones = {"Nombre y Apellido": nombre_apellido, "Edad": edad, "Mail": mail,
+              "Legajo": legajo, "Pregunta 1":[p1_si,p1_no], "Pregunta 2":[p2_si,p2_no],
+              "Pregunta 3":[p3_si,p3_no], "Comentarios": comentarios}
     
     return renglones
 
@@ -148,7 +147,7 @@ def check(linea, n_car, n_pal):
                 return True
             
         case 2:
-            if n_pal == 1 and n_car in [2, 3]:
+            if n_car in [2, 3]:
                 return True
         
         case 3:
@@ -169,12 +168,10 @@ def check(linea, n_car, n_pal):
             
     return False
 
-def printeo()
+def check_y_print(nombre_archivo):
+    print('\n' + nombre_archivo + ':\n')
 
-for i in range(1, 6):
-    print(f'Formulario 0{i}:\n')
-
-    renglones = sub_images(f'formulario_0{i}.png')
+    renglones = sub_images(nombre_archivo)
 
     n_linea = 0
     for nombre, imagen in renglones.items():
@@ -187,13 +184,22 @@ for i in range(1, 6):
         else:
             n_car, n_pal = contar_caracteres_y_palabras(imagen)
 
-        if(i == 4 and n_linea == 2):
-            print("NUM CAR:", n_car)
-            print("NUM PAL:", n_pal)
-
         if check(n_linea, n_car, n_pal):
             estado = 'OK'
         else:
             estado = 'MAL'
 
-        print(nombre + ':\t\t' + estado)
+        match(n_linea):
+            case 1:
+                n_tabs = 1
+            case 2 | 3 | 4:
+                n_tabs = 3
+            case 5 | 6 | 7 | 8:
+                n_tabs = 2
+
+        print('\t' + nombre + ':' + '\t' * n_tabs + estado)
+
+#check_y_print('formulario_vacio.png')
+
+for i in range(1, 6):
+    check_y_print(f'formulario_0{i}.png')
