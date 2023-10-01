@@ -6,7 +6,9 @@ pip install numpy
 pip install matplotlib
 
 Luego ejecutar:
+
 Ejercicio 1: python.exe '.\Ejercicio 1\ejercicio1.py'
+
 Ejercicio 2: python.exe '.\Ejercicio 2\ejercicio2.py'
 
 Los resultados de los ejercicios se encuentran como salida_ejercicio_1.png para el Ejercicio 1 en su respectiva carpeta y se muestran en consola para el Ejercicio 2, dichas evaluaciones son las siguientes:
