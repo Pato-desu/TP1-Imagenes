@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt 
+from plot_suma import plot_pix_sumat
 
 def sub_images(nom_archivo):
     # --- Cargo imagen ------------------------------------------------------------
