@@ -2,8 +2,6 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt 
 
-#CONTAR ESPACIO
-
 def plot_pix_sumat(img_zeros, suma_por_columna, suma_por_fila):
     # Crear vectores para los ejes x e y
     x = np.arange(img_zeros.shape[1])
