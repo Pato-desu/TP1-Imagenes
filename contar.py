@@ -37,6 +37,11 @@ def contar_caracteres_y_palabras(img):
         return 0,0
     inicio = caracteres_indices[0][0]
 
+    if len(caracteres) == 1:
+        return len(caracteres),len(caracteres)
+    
+    espacios = []
+    
     for j in range(len(caracteres_indices)-1):
         if j == len(caracteres_indices)-2:
             fin = caracteres_indices[j+1][1]
@@ -46,9 +51,10 @@ def contar_caracteres_y_palabras(img):
         elif caracteres_indices[j+1][0] - caracteres_indices[j][1] < 11:
             fin = caracteres_indices[j+1][1]
         else:
+            espacios.append((caracteres_indices[j][1], caracteres_indices[j+1][0]))
             fin = caracteres_indices[j][1]
             palabras_indices.append((inicio, fin))
             palabras.append(img[renglones_indxs[0][0]:renglones_indxs[1][0], inicio:fin])
             inicio = caracteres_indices[j+1][0]
 
-    return len(caracteres),len(palabras)
+    return len(caracteres+espacios),len(palabras)
