@@ -34,7 +34,7 @@ def plot_pix_sumat(img_zeros, suma_por_columna, suma_por_fila):
 def check_y_print(nombre_archivo):
     print('\n' + nombre_archivo + ':\n')
 
-    renglones = sub_images(nombre_archivo)
+    renglones = sub_images('Ejercicio 2/Images/'+nombre_archivo)
 
     n_linea = 0
     for nombre, imagen in renglones.items():
@@ -63,4 +63,4 @@ def check_y_print(nombre_archivo):
         print('\t' + nombre + ':' + '\t' * n_tabs + estado)
 
 for i in range(1, 6):
-    check_y_print(f'Images/formulario_0{i}.png')
+    check_y_print(f'formulario_0{i}.png')

@@ -25,4 +25,3 @@ def check(linea, n_car, n_pal):
                 return True       
             
     return False
-
