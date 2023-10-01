@@ -11,7 +11,10 @@ Ejercicio 1: python.exe '.\Ejercicio 1\ejercicio1.py'
 
 Ejercicio 2: python.exe '.\Ejercicio 2\ejercicio2.py'
 
-Los resultados de los ejercicios se encuentran como salida_ejercicio_1.png para el Ejercicio 1 en su respectiva carpeta y se muestran en consola para el Ejercicio 2, dichas evaluaciones son las siguientes:
+Los resultados de los ejercicios se encuentran como salida_ejercicio_1.png para el Ejercicio 1 en su respectiva carpeta:
+![image](https://github.com/Pato-desu/TP1-Imagenes/assets/102630216/3d51d7e2-d754-4ff2-931c-eb0ecb207c75)
+
+Se muestran en consola para el Ejercicio 2, dichas evaluaciones son las siguientes:
 
 formulario_01.png:
 
