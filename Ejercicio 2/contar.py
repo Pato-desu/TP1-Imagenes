@@ -35,11 +35,11 @@ def contar_caracteres_y_palabras(img):
     palabras=[]
     if caracteres_indices == []:
         return 0,0
-    inicio = caracteres_indices[0][0]
-
-    if len(caracteres) == 1:
-        return len(caracteres),len(caracteres)
     
+    if len(caracteres) == 1:
+        return 1,1
+    
+    inicio = caracteres_indices[0][0]
     espacios = []
     
     for j in range(len(caracteres_indices)-1):

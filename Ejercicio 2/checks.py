@@ -5,7 +5,7 @@ def check(linea, n_car, n_pal):
                 return True
             
         case 2:
-            if n_pal == 1 and n_car in [2, 3]:
+            if n_car in [2, 3]:
                 return True
         
         case 3:
@@ -25,4 +25,4 @@ def check(linea, n_car, n_pal):
                 return True       
             
     return False
-        
+
