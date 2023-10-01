@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt 
 
+#CONTAR ESPACIO
+#ARREGLAR LO DE LA EDAD ??
+
 def plot_pix_sumat(img_zeros, suma_por_columna, suma_por_fila):
     # Crear vectores para los ejes x e y
     x = np.arange(img_zeros.shape[1])
@@ -87,10 +90,110 @@ def sub_images(nom_archivo):
     
     return renglones
 
+def contar_caracteres_y_palabras(img):
+#Identifica caracteres
+    img_zeros = img == 0
+
+    img_row_zeros = img_zeros.any(axis=1)
+    x = np.diff(img_row_zeros)
+    renglones_indxs = np.argwhere(x)
+
+    # *** Modifico índices ***********
+    ii = np.arange(0,len(renglones_indxs),2) 
+    renglones_indxs[ii]+=1
+
+    img_columns_zeros = img_zeros.any(axis=0)
+    y = np.diff(img_columns_zeros)
+    columns_indxs = np.argwhere(y) 
+    # *** Modifico índices ***********
+    jj = np.arange(0,len(columns_indxs),2)
+    columns_indxs[jj]+=1
+
+    xx = np.arange(img.shape[1])
+    yy = np.zeros(img.shape[1])
+    yy[columns_indxs] = (img.shape[0]-1)
+    
+    caracteres_indices = []
+    caracteres = []
+    for i in range(0, len(columns_indxs), 2):
+        caracteres_indices.append((columns_indxs[i][0], columns_indxs[i+1][0]))
+        caracteres.append(img[renglones_indxs[0][0]:renglones_indxs[1][0], columns_indxs[i][0]:columns_indxs[i+1][0]])
+
+    palabras_indices = []
+    palabras=[]
+    if caracteres_indices == []:
+        return 0,0
+    inicio = caracteres_indices[0][0]
+
+    for j in range(len(caracteres_indices)-1):
+        if j == len(caracteres_indices)-2:
+            fin = caracteres_indices[j+1][1]
+            palabras_indices.append((inicio, fin))
+            palabras.append(img[renglones_indxs[0][0]:renglones_indxs[1][0], inicio:fin])
+            break
+        elif caracteres_indices[j+1][0] - caracteres_indices[j][1] < 11:
+            fin = caracteres_indices[j+1][1]
+        else:
+            fin = caracteres_indices[j][1]
+            palabras_indices.append((inicio, fin))
+            palabras.append(img[renglones_indxs[0][0]:renglones_indxs[1][0], inicio:fin])
+            inicio = caracteres_indices[j+1][0]
+
+    return len(caracteres),len(palabras)
+
+def check(linea, n_car, n_pal):
+    match linea:
+        case 1:  
+            if n_pal > 1 and n_car < 26:
+                return True
+            
+        case 2:
+            if n_pal == 1 and n_car in [2, 3]:
+                return True
+        
+        case 3:
+            if n_pal == 1 and n_car < 26:
+                return True
+                
+        case 4:
+            if n_pal == 1 and n_car == 8:
+                return True
+        
+        case 5 | 6 | 7:                 
+            if n_car == 1: 
+                return True
+                    
+        case 8:
+            if n_car < 26:
+                return True       
+            
+    return False
+
+def printeo()
+
 for i in range(1, 6):
-    nom_archivo
+    print(f'Formulario 0{i}:\n')
+
     renglones = sub_images(f'formulario_0{i}.png')
 
-    print()
-    for i in range(len(renglones)):
+    n_linea = 0
+    for nombre, imagen in renglones.items():
+        n_linea += 1
+        if type(imagen) is list:
+            n_car1, n_pal1 = contar_caracteres_y_palabras(imagen[0])
+            n_car2, n_pal2 = contar_caracteres_y_palabras(imagen[1])
+            n_car = n_car1 + n_car2
+            n_pal = n_pal1 + n_pal2
+        else:
+            n_car, n_pal = contar_caracteres_y_palabras(imagen)
 
+        if(i == 4 and n_linea == 2):
+            print("NUM CAR:", n_car)
+            print("NUM PAL:", n_pal)
+
+        if check(n_linea, n_car, n_pal):
+            estado = 'OK'
+        else:
+            estado = 'MAL'
+
+        print(nombre + ':\t\t' + estado)
