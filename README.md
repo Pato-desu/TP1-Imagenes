@@ -1,8 +1,11 @@
 # TP1 Procesamiento de Imágenes #
 
 Para ejecutar el código lo primero a hacer es instalar las librerías necesarias ejecutando en la terminal:
+
 pip install opencv-python
+
 pip install numpy
+
 pip install matplotlib
 
 Luego ejecutar:
@@ -11,8 +14,10 @@ Ejercicio 1: python.exe '.\Ejercicio 1\ejercicio1.py'
 
 Ejercicio 2: python.exe '.\Ejercicio 2\ejercicio2.py'
 
-Los resultados de los ejercicios se encuentran como salida_ejercicio_1.png para el Ejercicio 1 en su respectiva carpeta:
-![image](https://github.com/Pato-desu/TP1-Imagenes/assets/102630216/3d51d7e2-d754-4ff2-931c-eb0ecb207c75)
+Los resultados del Ejercicio 1 se encuentran en su respectiva carpeta como :
+
+![image](https://github.com/Pato-desu/TP1-Imagenes/assets/102630216/51e87924-e86c-4108-b0fd-0eac8a1bd303)
+
 
 Se muestran en consola para el Ejercicio 2, dichas evaluaciones son las siguientes:
 
