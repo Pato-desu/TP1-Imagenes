@@ -53,4 +53,4 @@ denoised_image = cv2.medianBlur(binary_image, kernel_size)
 # plt.show()
 
 # Guardar la imagen denoised
-cv2.imwrite('salida_ejercicio_1.png', denoised_image)
+cv2.imwrite('Ejercicio 1/salida_ejercicio_1.png', denoised_image)
